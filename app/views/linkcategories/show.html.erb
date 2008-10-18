@@ -1,0 +1,13 @@
+<p>
+  <b>Title:</b>
+  <%=h @linkcategory.title %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%=h @linkcategory.description %>
+</p>
+
+
+<%= link_to 'Edit', edit_linkcategory_path(@linkcategory) %> |
+<%= link_to 'Back', linkcategories_path %>

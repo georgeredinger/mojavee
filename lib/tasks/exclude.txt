@@ -1,0 +1,7 @@
+dispatch.fcgi
+dispatch.cgi
+dispatch.rb
+environment.rb
+.htaccess
+.git
+

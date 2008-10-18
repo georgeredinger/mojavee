@@ -1,0 +1,19 @@
+<p>
+
+<%= image_tag '/photos/' + @photo.filename %>
+</p>
+
+
+<p>
+  <b>created_at:  Filename: Thumbnail: Description:</b><br />
+  <%=h @photo.created_at %>
+ <%=h @photo.filename %>  
+  
+  <%=h @photo.thumbnail %>
+  <%=h @photo.description %>
+ 
+</p>
+
+
+<%= link_to 'Edit', edit_photo_path(@photo) %> |
+<%= link_to 'Back', photos_path %>

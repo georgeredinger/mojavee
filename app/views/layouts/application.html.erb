@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="description" content="Mojavee is a 1999 Trakehner Gelding competing in FEI dressage at I1">
+    
+    <title><%= @pagetitle %></title>
+    <%= stylesheet_link_tag   'scaffold', 'learningrails' %>
+    <%= javascript_include_tag  :defaults %>
+  </head>
+  <body>
+    <div id='pagewrapper'>
+      <div id='header'>
+        <p>Mojavee</p>
+      </div>
+      <div id='navbar'>
+        <ul>
+          <% @tabs.each do |page|  -%>
+              <% unless page.admin?  -%>
+                  <li <%= "id='current'"  if @page  && (@page == page    || @page.parent == page)  %>>
+                    <% if page.redirect? %>
+                        <%= link_to page.navlabel, :action => page.action_name,:controller => page.controller_name,:name => page.name  %>
+                    <% else %>
+                        <%=link_to page.navlabel, view_page_path(page.name)  %> 
+                    <% end  %>
+                    </li>
+          
+              <%else -%>
+                  <% if logged_in? -%>
+                      <li> 
+                        <%=link_to page.navlabel, view_page_path(page.name)  %> 
+                      </li> 
+                  <%end -%>
+              <% end -%>
+          <% end  -%>
+          
+          <% if logged_in? -%>
+              <li> 
+                <%=  link_to  "Log Out", logout_path  %> 
+              </li> 
+          <%end -%>
+          
+        </ul>
+      </div>
+      <div id='content'>
+        <h2> <%= flash[:notice]  %> </h2>
+        <%= yield %>
+      </div>
+      <div id='footer'>
+        <p><a href="http://redingerdressage.com">Redinger Dressage </a></p>
+      </div>
+    </div>
+    <% if ENV["RAILS_ENV"] == "development" %>
+        <hr>
+        <%= debug (params) %>
+    <% end %>
+    
+  </body>
+</html>

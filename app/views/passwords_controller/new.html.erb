@@ -1,0 +1,21 @@
+
+  <div class="form_container">
+    <% form_for(:password, :url => passwords_path) do |f| %>
+      <fieldset>
+        <div class="form_row">
+          <label for="login">Username</label><br/>
+          <%= text_field_tag 'login' %>
+        </div>
+
+        <div class="form_row">
+          <label for="email">Email</label><br/>
+          <%= text_field_tag 'email' %>
+        </div>
+
+        <div class="submit_row">
+          <%= submit_tag 'Send Password', :class => "button-to" %>
+        </div>
+      </fieldset>
+    <% end %>
+  </div>
+

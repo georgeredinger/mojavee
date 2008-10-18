@@ -1,0 +1,22 @@
+<h1>Editing slideshow</h1>
+
+<%= error_messages_for :slideshow %>
+
+<% form_for(@slideshow) do |f| %>
+  <p>
+    <b>Name</b><br />
+    <%= f.text_field :name %>
+  </p>
+
+  <p>
+    <b>Created at</b><br />
+    <%= f.datetime_select :created_at %>
+  </p>
+
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @slideshow %> |
+<%= link_to 'Back', slideshows_path %>

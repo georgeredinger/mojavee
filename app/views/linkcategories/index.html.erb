@@ -1,0 +1,22 @@
+<h1>Listing linkcategories</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Description</th>
+  </tr>
+
+<% for linkcategory in @linkcategories %>
+  <tr>
+    <td><%=h linkcategory.title %></td>
+    <td><%=h linkcategory.description %></td>
+    <td><%= link_to 'Show', linkcategory %></td>
+    <td><%= link_to 'Edit', edit_linkcategory_path(linkcategory) %></td>
+    <td><%= link_to 'Destroy', linkcategory, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New linkcategory', new_linkcategory_path %>

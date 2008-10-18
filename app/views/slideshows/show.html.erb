@@ -1,0 +1,13 @@
+<p>
+  <b>Name:</b>
+  <%=h @slideshow.name %>
+</p>
+
+<p>
+  <b>Created at:</b>
+  <%=h @slideshow.created_at %>
+</p>
+
+
+<%= link_to 'Edit', edit_slideshow_path(@slideshow) %> |
+<%= link_to 'Back', slideshows_path %>
