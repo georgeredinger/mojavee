@@ -7,7 +7,7 @@ set :application, "dell"
 
 set :deploy_to, "/var/www/mojavee"
 set :application, "rails"
-set :repository, ".git"
+set :repository, "git://github.com/georgeredinger/mojavee.git"
 set :user, "george"
 set :domain, "dell"
 
@@ -25,7 +25,12 @@ task :update_public, :roles => [:app] do
    #run "chmod 755 /home/redinger/public_html/mojavee/dispatch.*" 
  end  
  
-
+desc "Symlink shared configs and folders on each release."
+task :symlink_shared do
+#  run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"
+   run "ln -nfs /var/www/mojavee/config/database.yml #{release_path}/config/database.yml"
+  run "ln -nfs #{shared_path}/assets #{release_path}/public/assets"
+end
 
 desc "Restart Passenger" 
 deploy.task :restart, :roles => :app do
@@ -40,4 +45,6 @@ task :restart_web_server, :roles => :web do
   puts "pretending to be restarting web server"
 end
 
-after "deploy:start", :restart_web_server
+after "deploy:start",    :symlink_shared, :restart_web_server
+
+

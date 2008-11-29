@@ -17,17 +17,18 @@ set :copy_exclude, [".git", "materials"]
 set :chmod755, %w(app config db lib public vendor script tmp  public/dispatch.fcgi public/dispatch.rb public/.htaccess)
 set :use_sudo, false
 
-task :update_public, :roles => [:app] do  
-   
-   run   "ln -s ~/MojaveePhotos #{deploy_to+'/'+current_dir + '/public/photos' }"
-   run  "ln -s   ~/MojaveeMovies  #{deploy_to+'/'+current_dir + '/public/movies' }"
-end  
+#task :update_public, :roles => [:app] do
+#
+#   run   "ln -s ~/MojaveePhotos #{deploy_to+'/'+current_dir + '/public/photos' }"
+#   run  "ln -s   ~/MojaveeMovies  #{deploy_to+'/'+current_dir + '/public/movies' }"
+#end
+#
+#task :link_static_data, :roles => [:web] do
+#
+#   run   "ln -s ~/MojaveePhotos #{deploy_to+'/'+current_dir + '/public/photos' }"
+#   run  "ln -s   ~/MojaveeMovies  #{deploy_to+'/'+current_dir + '/public/movies' }"
+#end  
 
-task :link_static_data, :roles => [:web] do  
-   
-   run   "ln -s ~/MojaveePhotos #{deploy_to+'/'+current_dir + '/public/photos' }"
-   run  "ln -s   ~/MojaveeMovies  #{deploy_to+'/'+current_dir + '/public/movies' }"
-end  
 
 
 desc <<DESC 
@@ -68,6 +69,10 @@ task :remote_db_runner do
   remote_db_download
   remote_db_cleanup
 end
+ desc "Sync the public/assets directory."
+  task :assets do
+    system "rsync -vr  public/assets #{user}@#{application}:#{shared_path}/"
+  end
 
-after "deploy:symlink", :update_public , :link_static_data 
+after "deploy:symlink" ,    :symlink_shared, :restart_web_server
 

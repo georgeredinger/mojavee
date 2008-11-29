@@ -1,14 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/1"/>
-    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/1">
-        <file>file:/home/george/workspace/mojavee/README</file>
-        <file>file:/home/george/workspace/mojavee/app/controllers/categories_controller.rb</file>
-        <file>file:/home/george/workspace/mojavee/app/controllers/linkcategories_controller.rb</file>
-        <file>file:/home/george/workspace/mojavee/db/migrate/20080803012622_link_category_join.rb</file>
-        <file>file:/home/george/workspace/mojavee/test/fixtures/categories.yml</file>
-        <file>file:/home/george/workspace/mojavee/test/fixtures/links.yml</file>
-        <file>file:/home/george/workspace/mojavee/test/functional/categories_controller_test.rb</file>
-        <file>file:/home/george/workspace/mojavee/test/unit/link_test.rb</file>
-    </open-files>
 </project-private>
