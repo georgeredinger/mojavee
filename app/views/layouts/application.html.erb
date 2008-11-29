@@ -19,7 +19,7 @@
           <% @tabs.each do |page|  -%>
               <% unless page.admin?  -%>
                   <li <%= "id='current'"  if @page  && (@page == page    || @page.parent == page)  %>>
-                    <% if page.redirect? %>
+                    <% if false %>
                         <%= link_to page.navlabel, :action => page.action_name,:controller => page.controller_name,:name => page.name  %>
                     <% else %>
                         <%=link_to page.navlabel, view_page_path(page.name)  %> 
