@@ -19,6 +19,7 @@
           <% @tabs.each do |page|  -%>
               <% unless page.admin?  -%>
                   <li <%= "id='current'"  if @page  && (@page == page    || @page.parent == page)  %>>
+                    <%  logger.info "#{page.name}:#{page.redirect}?" %>
                     <% if page.redirect? %>
                         <%= link_to page.navlabel, :action => page.action_name,:controller => page.controller_name,:name => page.name  %>
                     <% else %>
